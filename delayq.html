@@ -110,6 +110,13 @@
                 container.appendChild(element);
             }
         }
+        function promotion(){
+        let queueItems = document.getElementsByClassName("delayq");
+        let length = queueItems.length;
+        let queueItem = document.getElementsByClassName("delayq")[Math.floor(Math.random() * length)];
+        let container = document.getElementById("target");
+        container.insertBefore(queueItem, container.firstChild);
+    }
 
 
     </script>
