@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Charishma Timer page</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Indie+Flower&display=swap" rel="stylesheet">
+        
+        <style>
+
+            h1 {
+                color:aqua;
+                font-weight: bold;
+                font-family:sans-serif;
+                margin-bottom: 7px;
+                padding: 7px;
+                text-shadow: 1.5px 1.5px darkmagenta;
+               
+            }
+
+            .menu 
+            {
+                background-color:darkseagreen;
+                padding: 13px;
+                color:deeppink;
+                margin-left: 300px;
+                text-align: center;
+                width: 450px;
+                
+            }
+
+            #target 
+            {
+                background-color:orange;
+                font-weight: 700;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                margin: 6px;
+                font-size: 17px;
+                
+            }
+
+            #countdown 
+            {
+                background-color:lawngreen;
+                font-weight: 700;
+                font-family: monospace;
+                margin:6px;
+                font-size: 17px;
+                
+            }
+
+            button
+            {
+                margin: 23px;
+            }
+
+        </style>
+    </head>
+    <body style="background-color:palevioletred;  text-align: center;" >
+        <div class="container text-center">
+            <h1 style="margin-bottom: 5px;margin-top: 10px;">Charishma React Timer</h1>
+            <div class="row menu">
+                <div class="col-md">
+                    <p id="target">Your time</p>
+                </div>
+                <div class="col-md"> <p id="countdown">Count</p></div>
+            </div>
+            <div class="container text-center">
+                <button class="btn btn-danger" type="submit" onclick="startTime()">Start Timer</button>
+                <button class="btn btn-warning" type="submit" onclick="recordTime()">React</button>
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script>
+            var reactTime = undefined;
+            function  recordTime()
+            {
+                reactTime = Date.now()
+                console.log(reactTime)
+            }
+            function startTime() 
+            {
+                let countdown = Math.floor(Math.random() * 9) + 2;
+                console.log()
+                for(let i = 0; i < countdown; i++)
+                {
+                    setTimeout(() => {
+                        document.getElementById("countdown").innerHTML = i
+                    }, ((countdown-1-i)*1000));
+                }
+                setTimeout(() => {
+                    if(reactTime == undefined) 
+                    {
+                        document.getElementById("target").innerHTML = "Too Slow"
+                    } 
+                    else
+                    {
+                        let endTime = Date.now()
+                   
+                        document.getElementById("target").innerHTML = "Time was " + ( endTime - reactTime)
+                    }
+                }, 8000);
+            }
+        </script>
+    </body>
+</html>
